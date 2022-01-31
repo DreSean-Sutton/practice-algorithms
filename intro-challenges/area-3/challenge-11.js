@@ -18,7 +18,6 @@
 */
 
 function solution(ticket) {
-  debugger
   let ticketArr = ticket.toString().split('');
   let splitIndex = Math.floor(ticketArr.length / 2);
   let firstHalf = ticketArr.slice(0, splitIndex);
@@ -37,5 +36,3 @@ function solution(ticket) {
     return false;
   }
 }
-
-solution(123501);
