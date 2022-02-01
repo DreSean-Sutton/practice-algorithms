@@ -47,3 +47,16 @@ function solution(arr) {
 }
 
 solution([-1, 150, 190, 170, -1, -1, 160, 180])
+
+// SOLUTION UTILIZING FILTER AND MAP METHOD, BELOW
+
+function solution(a) {
+  var s = a.filter(h => h > 0).sort((a, b) => a - b)
+  return a.map(p => {
+    if (p !== -1) {
+      return s.shift();
+    }
+
+    return -1;
+  })
+}
