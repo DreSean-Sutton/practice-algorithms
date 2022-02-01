@@ -16,7 +16,7 @@ return arr
 -create a variable named splitStr and assign it the value of the split method of arr
 -create a variable namd preReverseStr and assign it the value of an empty array
 -create a variable named reverseStr and assign it the value of an empty string
--create a variable named openParenthesisCount and assign it the value of 0
+-create a variable named parenthesisCounter and assign it the value of 0
 -loop1
 -create a for loop that:
   a. assigns the value of 0 to i
@@ -28,10 +28,14 @@ return arr
       a. assigns the value of i + 1 to j
       b. executes code block if j is less than arr.length
       c. j++
-      if splitStr[j] is not strictly equal to '(' or ')'
+      if myRegex.test(splitStr[i]) is true
         call the push method of preReverseStr with splitStr[j]
-        -else if splitStr[j] is strictly equal to ')' and openParenthesisCount is strictly equal to 0
-        call the reverse method of preReverseStr and assign the value to reverseStr
+        else if splitStr is strictly equal to '('
+        increment parenthesisCounter by 1
+        -else if splitStr[j] is strictly equal to ')' and parenthesisCounter is greater than 0
+          decrement parenthesisCounter by 1
+        -else if splitStr[j] is strictly equal to ')' and parenthesisCounter is strictly equal to 0
+          call the reverse method of preReverseStr and assign the value to reverseStr
         loop3
         -create a for loop that:
           a. assign the value of 0 to k
@@ -52,15 +56,27 @@ function solution (str) {
   let splitStr = str.split('')
   let preReverseStr = [];
   let reverseStr = ''
-  let openParenthesisCount = 0;
+  let parenthesisCounter = 0;
+  let myRegex = /\w/i
   loop1:
   for (let i = 0; i < splitStr.length; i++) {
-    if (splitStr[i] === '(') {
+    if (splitStr[i] === ')') {
+      splitStr.splice(i, 1);
+    } else if (splitStr[i] === '(') {
       loop2:
       for (let j = i + 1; j < splitStr.length; j++) {
-        if ((splitStr[j] !== '(') && (splitStr[j] !== ')')) {
+        if (myRegex.test(splitStr[j])) {
           preReverseStr.push(splitStr[j]);
-        } else if ((splitStr[j] === ')') && (openParenthesisCount === 0)) {
+          if (splitStr[j] === '(') {
+            parenthesisCounter++;
+            splitStr.splice(j, 1)
+            j--
+            continue loop1;
+          } else if ((splitStr[j] === '(') && (parenthesisCounter > 0)) {
+            splitStr.splice(i, 1)
+            continue loop1;
+          }
+        } else if ((splitStr[j] === ')') && (parenthesisCounter === 0)) {
           reverseStr = preReverseStr.reverse();
           for (let k = 0; k < reverseStr.length; k++) {
             splitStr.splice(i, 1, reverseStr[k]);
@@ -79,4 +95,4 @@ function solution (str) {
   return splitStr.join('');
 }
 
-solution("foo(bar)baz(blim)")
+solution("foo(bar(baz))blim")
