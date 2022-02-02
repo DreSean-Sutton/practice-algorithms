@@ -69,7 +69,10 @@ function solution (str) {
             i++
           }
           splitStr.splice(i, 2);
-          i--;
+          if (!splitStr.includes('(')) {
+            return splitStr.join('');
+          }
+          i= 0;
           reverseStr = [];
           continue loop1;
         }
