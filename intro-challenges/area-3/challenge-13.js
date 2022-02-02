@@ -14,9 +14,7 @@ return arr
 
 /*
 -create a variable named splitStr and assign it the value of the split method of arr
--create a variable namd preReverseStr and assign it the value of an empty array
 -create a variable named reverseStr and assign it the value of an empty string
--create a variable named parenthesisCounter and assign it the value of 0
 -loop1
 -create a for loop that:
   a. assigns the value of 0 to i
@@ -29,13 +27,7 @@ return arr
       b. executes code block if j is less than arr.length
       c. j++
       if myRegex.test(splitStr[i]) is true
-        call the push method of preReverseStr with splitStr[j]
         else if splitStr is strictly equal to '('
-        increment parenthesisCounter by 1
-        -else if splitStr[j] is strictly equal to ')' and parenthesisCounter is greater than 0
-          decrement parenthesisCounter by 1
-        -else if splitStr[j] is strictly equal to ')' and parenthesisCounter is strictly equal to 0
-          call the reverse method of preReverseStr and assign the value to reverseStr
         loop3
         -create a for loop that:
           a. assign the value of 0 to k
@@ -45,7 +37,6 @@ return arr
           -increment i by 1
          continue loop1
         -else
-          preReverseStr = [];
           spliceCounter = 0
           continue loop1
 return the join method of splitStr with '' as it's argument
@@ -54,39 +45,32 @@ return the join method of splitStr with '' as it's argument
 function solution (str) {
   debugger;
   let splitStr = str.split('')
-  let preReverseStr = [];
-  let reverseStr = ''
-  let parenthesisCounter = 0;
+  let reverseStr = [];
   let myRegex = /\w/i
   loop1:
   for (let i = 0; i < splitStr.length; i++) {
     if (splitStr[i] === ')') {
       splitStr.splice(i, 1);
+      i = 0;
     } else if (splitStr[i] === '(') {
       loop2:
       for (let j = i + 1; j < splitStr.length; j++) {
         if (myRegex.test(splitStr[j])) {
-          preReverseStr.push(splitStr[j]);
-          if (splitStr[j] === '(') {
-            parenthesisCounter++;
-            splitStr.splice(j, 1)
-            j--
-            continue loop1;
-          } else if ((splitStr[j] === '(') && (parenthesisCounter > 0)) {
-            splitStr.splice(i, 1)
-            continue loop1;
-          }
-        } else if ((splitStr[j] === ')') && (parenthesisCounter === 0)) {
-          reverseStr = preReverseStr.reverse();
+          reverseStr.push(splitStr[j]);
+        }
+        if (splitStr[j] === '(') {
+          i = j - 1;
+          reverseStr = [];
+          continue loop1;
+        } else if ((splitStr[j] === ')')) {
+            reverseStr.reverse();
           for (let k = 0; k < reverseStr.length; k++) {
             splitStr.splice(i, 1, reverseStr[k]);
             i++
           }
           splitStr.splice(i, 2);
-          preReverseStr = []
-          continue loop1;
-        } else {
-          preReverseStr = [];
+          i--;
+          reverseStr = [];
           continue loop1;
         }
       }
@@ -96,3 +80,7 @@ function solution (str) {
 }
 
 solution("foo(bar(baz))blim")
+
+// For inputString = "foo(bar(baz))blim", the output should be
+// solution(inputString) = "foobazrabblim".
+//   Because "foo(bar(baz))blim" becomes "foo(barzab)blim" and then "foobazrabblim".
