@@ -6,33 +6,30 @@ loop1:
     a. assigns the value of 0 to i
     b. executes code block if i is less than arr.length
     c. i++
-    -call the splice method at arr[i] with 0, 0, and '*' as arguments
-    -call the splice method at arr[i] with arr.length, 0, and '*' as arguments
+    -assign the value of `*${arr[i]}*` to arr[i]
     -continue loop1;
 -create a while loop that executes code block if asteriskCounter is greater than 0
     call the push method of asteriskArr with '*' as it's argument
     -decrement asteriskCounter by 1
--call the unshift method on arr with asteriskArr.slice(0) as it's parameter
--call the push method on arr with asteriskArr.slice(0) as it's parameter
+-call the unshift method on arr with asteriskArr.slice(0).join('') as it's parameter
+-call the push method on arr with asteriskArr.slice(0).join('') as it's parameter
 -return arr
 */
 
 function solution(arr) {
-  debugger;
   let asteriskCounter = arr[0].length + 2
   let asteriskArr = [];
   loop1:
   for (let i = 0; i < arr.length; i++) {
-    arr[i].splice(0, 0, '*');
-    ar[i].splice(arr.length, 0, '*');
+    arr[i] = `*${arr[i]}*`
     continue loop1;
   }
   while (asteriskCounter > 0) {
     asteriskArr.push('*');
     asteriskCounter--;
   }
-  arr.unshift(asteriskArr.slice(0));
-  arr.push(asterisk.slice(0));
+  arr.unshift(asteriskArr.slice(0).join(''));
+  arr.push(asteriskArr.slice(0).join(''));
   return arr;
 }
 
