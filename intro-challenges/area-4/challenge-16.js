@@ -22,18 +22,30 @@
 */
 
 function solution(arr1, arr2) {
-  const wrongIndex = 0
+  debugger;
+  let wrongIndex = 0
   if (arr1.length !== arr2.length) {
     return false;
   }
 
   for (let i = 0; i < arr1.length; i++) {
+    if ((!arr2.includes(arr1[i])) || (!arr1.includes(arr2[i]))) {
+      return false;
+    }
+
     if (arr1[i] !== arr2[i]) {
       wrongIndex++
     }
+
     if (wrongIndex > 2) {
       return false;
     }
   }
+  if (wrongIndex === 1) {
+    return false;
+  }
+
   return true;
 }
+
+solution([832, 998, 148, 570, 533, 561, 894, 147, 455, 279], [832, 570, 148, 998, 533, 561, 455, 147, 894, 279])
