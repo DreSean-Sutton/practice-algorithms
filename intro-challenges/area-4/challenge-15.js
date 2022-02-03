@@ -35,3 +35,15 @@ function solution(arr) {
 
 solution(
   ["a"])
+
+
+//  COOL SOLUTION BELOW THAT UTILIZES MAP METHOD (NOT MINE)
+
+function solution(picture) {
+  var width = picture[0].length + 2;
+  return [
+    '*'.repeat(width),
+    ...picture.map(line => `*${line}*`),
+    '*'.repeat(width)
+  ];
+}
