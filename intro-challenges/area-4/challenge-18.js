@@ -21,24 +21,29 @@ Use indexOf to find out if another occurance of the same character is in the str
 */
 
 function solution(string) {
+  var newStr = string.slice(0).split('');
   debugger
   let soloCharacterCounter = 0
   for (let i = 0; i < string.length; i++) {
     if (string.length % 2 === 0) {
-      if (string.indexOf(string[i] === -1)) {
+      newStr.splice(i, 1);
+      if (!newStr.includes(string[i])) {
         return false;
       }
+      newStr.splice(i, 0, string[i])
     } else {
-      if (string[i].indexOf(string[i]) === -1) {
+      newStr.splice(i, 1);
+      if (!newStr.includes(string[i])) {
         soloCharacterCounter++
       }
       if (soloCharacterCounter > 1) {
         return false;
       }
+      newStr.splice(i, 0, string[i])
     }
   }
   return true;
 }
 
 
-solution("zaa")
+solution("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbccccaaaaaaaaaaaaa")
