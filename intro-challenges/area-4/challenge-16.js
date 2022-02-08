@@ -1,51 +1,45 @@
 /*
--check to see if both arrays contain the same exact numbers
--create a counter that increments if both arrays at the same index aren't equal
--iterate through the array, checking to see if it's strictly equal
--return false if counter is higher than 2
--return true if iteration ends and counter is at or less than 2
-/*
-
-/*
--if arr1.length is not strictly equal to arr2.length
-  return
--create variable named wrongIndex and assign it the value of 0
--create a for loop that:
+-create a function named solution with arr1 and arr2 as it's arguments
+  -create a variable named testArr and assign it the value of an empty array literal
+  -if the length property of arr1 is not strictly equal to the length property of arr2:
+    -return false;
+  -create a for loop that:
   a. assigns the value of 0 to i
-  b. executes code block if i is less than arr1.length
+  b. executes the code block if i is less than the length property of arr1
   c. i++
-  -if arr1[i] is not strictly equal to arr2[i]
-    increment wrongIndex by 1
-  -if wrongIndex is greater than 2
-    return false
--return true
+    -if arr1 at index i is not strictly equal to arr2 at index i:
+      call the push method of testArr with arr1 at index i and arr2 at index i as it's arguments
+  -if the length property of testArr is strictly equal to 0:
+    return true
+  -else if the length property of testArr is strictly equal to 4:
+    -if testArr at index 0 is strictly equal to testArr at index 3 and
+    a. testArr at index 1 is strictly equalt to testArr at index 2:
+      return true;
+-return false;
 */
 
 function solution(arr1, arr2) {
-  debugger;
-  let wrongIndex = 0
+
+  let testArr = []
   if (arr1.length !== arr2.length) {
     return false;
   }
 
   for (let i = 0; i < arr1.length; i++) {
-    if ((!arr2.includes(arr1[i])) || (!arr1.includes(arr2[i]))) {
-      return false;
-    }
-
     if (arr1[i] !== arr2[i]) {
-      wrongIndex++
+      testArr.push(arr1[i], arr2[i]);
     }
 
-    if (wrongIndex > 2) {
-      return false;
+  }
+  if (testArr.length === 0) {
+    return true;
+  } else if (testArr.length === 4) {
+    if (
+      testArr[0] === testArr[3] &&
+      testArr[1] === testArr[2]
+    ) {
+      return true;
     }
   }
-  if (wrongIndex === 1) {
-    return false;
-  }
-
-  return true;
+  return false;
 }
-
-solution([832, 998, 148, 570, 533, 561, 894, 147, 455, 279], [832, 570, 148, 998, 533, 561, 455, 147, 894, 279])
