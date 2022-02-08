@@ -11,6 +11,7 @@ a. it's argument of the slice method of string with 0 as it's argument
   c. i++
   -if the includes method of usedLetters with string[i] as it's argument is true:
     call the continue statement
+    call the push method of usedLetters with string[i] as it's argument
   -create a variable named currentLetter and assign it the value of string at index i
   -create a variable named letterCounter and assign it the value of the new function named RegExp with
   a. currentLetter and the string 'g' as it's arguments
@@ -38,7 +39,6 @@ a. it's argument of the slice method of string with 0 as it's argument
 */
 
 function solution(string) {
-  // debugger;
   let usedLetters = [];
   let newStr = string.slice(0).split('');
   let soloCharacterCounter = 0
@@ -48,6 +48,7 @@ function solution(string) {
     if (usedLetters.includes(string[i])) {
       continue;
     }
+    usedLetters.push(string[i])
     let currentLetter = string[i];
     let letterCount = new RegExp(currentLetter, 'g');
     let duplicateCounter = string.match(letterCount).length;
@@ -55,14 +56,12 @@ function solution(string) {
       oddDuplicateNumber++
     }
     if (oddDuplicateNumber > 1) {
-      // debugger;
       return false;
     }
     if (string.length % 2 === 0) {
       usedLetters.push(string[i]);
       newStr.splice(i, 1);
       if (!newStr.includes(string[i])) {
-        // debugger;
         return false;
       }
       newStr.splice(i, 0, string[i])
@@ -72,15 +71,12 @@ function solution(string) {
         soloCharacterCounter++
       }
       if (soloCharacterCounter > 1) {
-        // debugger;
         return false;
       }
       newStr.splice(i, 0, string[i])
     }
   }
-  // debugger;
   return true;
 }
 
-
-solution("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbccccaaaaaaaaaaaaa")
+solution('ccdddabbbbb');
