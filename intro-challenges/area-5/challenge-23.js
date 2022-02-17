@@ -34,34 +34,28 @@
 function solution(arr) {
   debugger;
   let newArr = [];
-  let temArr = [];
   let rowIncrementer = 0;
   let colIncrementer = 0;
-  let pixelCounter = 0;
   return handleLoops(arr, rowIncrementer, colIncrementer, newArr)
 }
 
 function handleLoops(arr, rowIncrementer, colIncrementer, newArr) {
   debugger;
+  let pixelCounter = 0;
+  let tempArr = [];
   for (let i = rowIncrementer; i < 3 + rowIncrementer; i++) {
     for (let j = colIncrementer; j < 3 + colIncrementer; j++) {
-      if (arr[i] === undefined) {
-        return newArr;
-      } else if (arr[i][j] === undefined) {
-        rowIncrementer++;
-        colIncrementer++;
-        pixelCounter = 0;
-        newArr.push(tempArr);
-        tempArr = [];
-        return handleLoops(arr, rowIncrementer, colIncrementer, newArr)
-      } else {
-        pixelCountr += arr[i][j]
-      }
+        pixelCounter += arr[i][j]
     }
   }
   tempArr.push(Math.floor(pixelCounter / 9));
+  colIncrementer++;
+  pixelCounter = 0;
+  return handleLoops(arr, rowIncrementer, colIncrementer, newArr);
 }
 
 solution([[1, 1, 1],
 [1, 7, 1],
 [1, 1, 1]]);
+
+//Returning undefined. Needs a return statement
