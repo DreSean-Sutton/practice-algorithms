@@ -1,13 +1,13 @@
 function solution(matrix) {
   debugger;
-  var newMatrix = [];
-  var mineCounter = 0;
-  var rowLoopStopper = 2;
-  var colLoopStopper = 2;
-  var checkCurrentIIndex = 0;
-  var checkCurrentJIndex = 0;
+  let newMatrix = [];
+  let mineCounter = 0;
+  let checkCurrentIIndex = 0;
+  let checkCurrentJIndex = 0;
   for (let i = 0; i < matrix.length; i++) {
-    var tempMatrix = [];
+    let rowLoopStopper = 2;
+    let colLoopStopper = 2;
+    let tempMatrix = [];
     for (let j = 0; j < matrix[i].length; j++) {
       for (let k = i - 1; k < rowLoopStopper; k++) {
         for (let l = j - 1; l < colLoopStopper; l++) {
