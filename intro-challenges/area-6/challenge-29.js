@@ -5,9 +5,8 @@
 a. the charCodeAt method of cell1 with 0 as it's argument and subtract it by the
 b. charCodeAt method of cell2 with 0 as it's argument) and assign its value to codeDiff
 -call the abs method of Math with (cell1 at index 1 - cell2 at index 1) as it's arguments and assign it's value to numberDiff
-if numberDiff % 2 is strictly equal to codeDiff % 2:
-  -return true
--return false
+-return numberDiff % 2 is strictly equal to codeDiff % 2
+
 */
 
 function solution(cell1, cell2) {
