@@ -1,6 +1,6 @@
-let getRangeResult = {}
 
 const getRangeReport = (start, end) => {
+  let getRangeResult = {}
 
   function handleTotal () {
     let totalSum = 0;
@@ -11,7 +11,7 @@ const getRangeReport = (start, end) => {
   }
 
   function handleOdds () {
-    let numArr = [];
+    const numArr = [];
     for(let i = start; i <= end; i++) {
       if (i % 2 !== 0) {
         numArr.push(i);
@@ -22,7 +22,7 @@ const getRangeReport = (start, end) => {
   }
 
   function handleEvens() {
-    let numArr = [];
+    const numArr = [];
     for(let i = start; i <= end; i++) {
       if (i % 2 === 0) {
         numArr.push(i);
@@ -33,7 +33,7 @@ const getRangeReport = (start, end) => {
   }
 
   function handleRange() {
-    let numArr = [];
+    const numArr = [];
     for(let i = start; i <= end; i++) {
       numArr.push(i);
     }
