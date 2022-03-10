@@ -94,3 +94,11 @@ const getRangeReport = (start, end) => {
 //     evens - an array containing all of the even integers from start to end.
 //       range - an array containing all integers from start to end.
 //         average - the average of all integers from start to end.
+
+
+
+/* Nintendo slider
+  opacity: 1;
+  width: 60000px;
+  transform: translate3d(-5054px, 0px, 0px);
+  transition: transform 30000ms linear 0s; */
