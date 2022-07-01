@@ -2,7 +2,7 @@ function belvethUltPassive(baseDmg, hits, bonusAd) {
   let totalDmg = 0;
   let i = 0;
   bonusAd
-    ? fullDmg = baseDmg + Math.round(bonusAd / 100)
+    ? fullDmg = baseDmg + Math.fround(bonusAd / 100)
     : fullDmg = baseDmg
   while (i <= hits) {
     if (i % 2 === 0) {
