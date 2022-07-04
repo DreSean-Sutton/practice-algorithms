@@ -6,12 +6,12 @@ function belvethUltPassive(baseDmg, hits, bonusAd) {
     : fullDmg = baseDmg
   while (i <= hits) {
     if (i % 2 === 0) {
-      damagePer2Hits(fullDmg, i);
+      damagePer2Hits();
     }
     i++;
   }
-  function damagePer2Hits(dmg, stack) {
-    totalDmg += dmg * stack / 2;
+  function damagePer2Hits() {
+    totalDmg += fullDmg * i / 2;
     return;
   }
   return Number(totalDmg.toFixed(1));
