@@ -1,2 +1,2 @@
-# codeSignal-JS-solutions
-A repository for my JavaScript solutions from https://app.codesignal.com/
+# practice-algorithms
+A repository for my Algorithm and Data Structure solutions from https://app.codesignal.com/
